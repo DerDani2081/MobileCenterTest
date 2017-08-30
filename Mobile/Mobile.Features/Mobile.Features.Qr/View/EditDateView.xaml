@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="Mobile.Features.Qr.View.EditDateView"
+	xmlns:converter="clr-namespace:Mobile.Features.Qr.Converter">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converter:MonthToIndexConverter x:Key="monthToIndexConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Speichern" Command="{Binding Save}" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<Grid Margin="5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Image Source="edit.png" Style="{StaticResource detailImageStyle}"/>
+                <Label Text="Datum bearbeiten..." VerticalOptions="Center" FontSize="Medium" TextColor="#be0029" />
+            </StackLayout>
+
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Color="#CCCCCC" WidthRequest="100" HeightRequest="1" />
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Monat" FontSize="Medium"/>
+			<Button Grid.Row="3" Grid.Column="0" Text="-" HorizontalOptions="Fill" BackgroundColor="LightGray" Clicked="Handle_MinusMonat_Clicked" />
+			<Picker Grid.Row="4" Grid.Column="0" x:Name="monthPicker" Title="Monat" />
+			<Button Grid.Row="5" Grid.Column="0" Text="+" HorizontalOptions="Fill" BackgroundColor="LightGray" Clicked="Handle_PlusMonat_Clicked" />
+
+            <Label Grid.Row="2" Grid.Column="1" Text="Jahr"  FontSize="Medium"/>
+			<Button Grid.Row="3" Grid.Column="1" Text="-" HorizontalOptions="Fill" BackgroundColor="LightGray" Clicked="Handle_MinusYear_Clicked" />
+			<Picker Grid.Row="4" Grid.Column="1" x:Name="yearPicker" Title="Jahr" />
+			<Button Grid.Row="5" Grid.Column="1" Text="+" HorizontalOptions="Fill" BackgroundColor="LightGray" Clicked="Handle_PlusYear_Clicked" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

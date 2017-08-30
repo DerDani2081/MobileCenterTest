@@ -1,0 +1,21 @@
+<div class="header">
+    <div class="col-left">
+        <img src="images/icon_driver.svg" alt="Icon Driver">
+    </div>
+    <div class="col-right">
+        <div class="driver-name">
+            <span data-bind="text: surname"></span>
+            <span data-bind="text: lastname"></span>
+        </div>
+        <div class="driver-birthday">
+            <span data-bind="text: birthday"></span>
+        </div>
+    </div>
+    <ul>
+        <li>            
+            <span class="col-left" data-translate="general.mobilePhone"></span>
+            <span class="col-right" data-bind="text: phoneNumber"></span>
+        </li>
+    </ul>
+    <pre class="test-response" data-bind="html: response"></pre>
+</div>

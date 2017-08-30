@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="Mobile.Common.Controls.View.GtueMainViewMaster"
+						 xmlns:local="clr-namespace:Mobile.Common.Controls.Utils"
+						 Title="Menü"
+						 Icon="menu.png">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<DataTemplate x:Key="gtueMainViewMenuSeparator">
+				<ViewCell>
+                    <BoxView Color="White" HeightRequest="13" />
+				</ViewCell>
+			</DataTemplate>
+			<DataTemplate x:Key="MenuItemViewModel">
+				<ViewCell>
+					<StackLayout HeightRequest="40" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,2,0,0" BackgroundColor="LightGray">
+						<Image HeightRequest="20" Source="{Binding ImgSource}" Margin="10">
+							<Image.WidthRequest>
+								<OnPlatform x:TypeArguments="x:Double"
+									iOS="50"
+									Android="20"
+									WinPhone="75"/>
+							</Image.WidthRequest>
+							<Image.HeightRequest>
+								<OnPlatform x:TypeArguments="x:Double"
+									iOS="50"
+									Android="20"
+									WinPhone="75"/>
+							</Image.HeightRequest>
+						</Image>
+						<Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="Medium" Text="{Binding Title}" Margin="10,0,0,0" TextColor="White"/>
+                        <Image Source="next.png" Margin="0,0,10,0" 
+                               VerticalOptions="Center" HorizontalOptions="EndAndExpand"
+                               HeightRequest="15" 
+                               WidthRequest="15"
+                               Opacity="0.6"/>
+
+                    </StackLayout>
+				</ViewCell>
+
+				<!--<ImageCell Text="{Binding Title}" ImageSource="{Binding ImgSource}" />-->
+			</DataTemplate>
+			<Style x:Key="piTextColor" TargetType="Label">
+                <Setter Property="TextColor" Value="#575757" />
+			</Style>
+			<local:MainMenuItemTemplateSelector x:Key="mainMenuItemTemplateSelector"
+																				SeparatorTemplate="{StaticResource gtueMainViewMenuSeparator}"
+																				ItemTemplate="{StaticResource MenuItemViewModel}"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<StackLayout>
+		<ListView x:Name="MenuItemsListView"
+							SeparatorVisibility="None"
+							HasUnevenRows="true" 
+							ItemsSource="{Binding MenuItems}"
+							SelectedItem="{Binding SelectedMenuItem}"
+							ItemTemplate="{StaticResource mainMenuItemTemplateSelector}"
+							ItemSelected="Handle_ItemSelected">
+            <ListView.Header>
+                <Grid BackgroundColor="#ececec" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="10"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="18"/>
+						<RowDefinition Height="18"/>
+						<RowDefinition Height="10"/>
+					</Grid.RowDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
+								 Source="{Binding UserInfo.ImageSource}"
+								 HeightRequest="110" 
+								 WidthRequest="110" 
+								 HorizontalOptions="EndAndExpand"
+								 VerticalOptions="Start"
+                                 Margin="0,-20,5,0"
+                               />
+                    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+						<Label Text="PI: " Style="{StaticResource piTextColor}" FontSize="Small" />
+                        <Label Text="{Binding UserInfo.FullName}" Style="{StaticResource piTextColor}" FontSize="Small" />
+					</StackLayout>
+					<StackLayout Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                        <Label Text="ID: " Style="{StaticResource piTextColor}" FontSize="Small"/>
+                        <Label Text="{Binding UserInfo.PruefingenieurId}" Style="{StaticResource piTextColor}" FontSize="Small"/>
+                    </StackLayout>
+				</Grid>
+			</ListView.Header>
+		</ListView>
+	</StackLayout>
+</ContentPage>

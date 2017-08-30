@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B18828B-5EBC-45DA-AB5D-699A0921B551}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Mobile.Common.Services</RootNamespace>
+    <AssemblyName>Mobile.Common.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataTransfairObject\DtoFile.cs" />
+    <Compile Include="DataTransfairObject\DtoPruefmittel.cs" />
+    <Compile Include="DataTransfairObject\DtoUserInfo.cs" />
+    <Compile Include="DataTransfairObject\DtoUserLogin.cs" />
+    <Compile Include="Implementations\StorageAccountService.cs" />
+    <Compile Include="Implementations\WebAccountService.cs" />
+    <Compile Include="Implementations\StoragePruefmittelService.cs" />
+    <Compile Include="Utils\Parser.cs" />
+    <Compile Include="Implementations\WebPruefmittelService.cs" />
+    <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IPruefmittelService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\testPI.jpg" />
+    <EmbeddedResource Include="TestFiles\BT110.jpg" />
+    <EmbeddedResource Include="TestFiles\Kalibrierschein BremsenprüfstandX.pdf" />
+    <EmbeddedResource Include="TestFiles\SEG4.jpg" />
+    <EmbeddedResource Include="TestFiles\SEP-KalibrierscheinX.pdf" />
+    <EmbeddedResource Include="TestFiles\SEP-Platz-KalibrierscheinX.pdf" />
+    <EmbeddedResource Include="TestFiles\SH-5000.jpg" />
+    <EmbeddedResource Include="TestFiles\test.jpg" />
+    <EmbeddedResource Include="TestFiles\test.pdf" />
+    <EmbeddedResource Include="TestFiles\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mobile.Common.Utilities\Mobile.Common.Utilities.csproj">
+      <Project>{F6F93EC3-5C93-4FCB-8AC1-CEF11C70A7E6}</Project>
+      <Name>Mobile.Common.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\testPI.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+</Project>

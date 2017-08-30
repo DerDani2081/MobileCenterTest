@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="Mobile.Common.Controls.View.LoginPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonRedStyle" TargetType="Button">
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="#be0029" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Opacity" Value="0.8" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="loginbg.png" Aspect="Fill"/>
+
+            <StackLayout>
+                <Image Source="gtueLogo3d.png" HorizontalOptions="Center" HeightRequest="140"/>
+                
+                <Grid Padding="40">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!--Image Source="{Binding GtueImageSource}" /-->
+
+                    <StackLayout Grid.Row="1"  Orientation="Horizontal">
+                        <Image Source="person.png" HorizontalOptions="Center" HeightRequest="20"/>
+                        <Entry Placeholder="Mitarbeiter-Nummer" Text="{Binding Email}" x:Name="emailEntry" Keyboard="Email" HorizontalOptions="FillAndExpand" PlaceholderColor="#d9d9d9">
+                            <Entry.TextColor>
+                                <OnPlatform x:TypeArguments="Color" Android="#f3f3f3" />
+                            </Entry.TextColor>
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                        <Image Source="key.png" HorizontalOptions="Center" HeightRequest="20"/>
+                        <Entry  Placeholder="Passwort" Text="{Binding Password}" x:Name="passwordEntry" IsPassword="true" HorizontalOptions="FillAndExpand" PlaceholderColor="#d9d9d9">
+                            <Entry.TextColor>
+                                <OnPlatform x:TypeArguments="Color" Android="#f3f3f3" />
+                            </Entry.TextColor>
+                        </Entry>
+                    </StackLayout>
+                        
+                    <StackLayout Grid.Row="3" Orientation="Horizontal">
+                        <Switch IsToggled="{Binding SaveLoginData}" />
+                        <Label Text="Speichern" Margin="10,0,0,0" VerticalOptions="Center" TextColor="#d9d9d9" />
+                    </StackLayout>
+
+                    <Button Grid.Row="5" Text="Anmelden" Command="{Binding LoginUser}" Style="{StaticResource buttonRedStyle}" />
+
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
